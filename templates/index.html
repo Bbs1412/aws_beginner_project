@@ -1,0 +1,42 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top 10 Places in India</title>
+    <!-- <link rel="stylesheet" type="text/css" href="styles.css"> -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">Incredible India</div>
+            <div class="nav-links">
+                <a href="#" class="active">Home</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Discover India's Most Beautiful Places</h1>
+        <div class="places-grid" id="placesContainer">
+            <!-- Places will be dynamically loaded here -->
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Incredible India. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>

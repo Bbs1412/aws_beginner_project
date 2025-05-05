@@ -1,0 +1,181 @@
+/* ------------------------------------------------------------------------------------------ */
+/*                                      Global Styles                                         */
+/* ------------------------------------------------------------------------------------------ */
+
+
+:root {
+    --bg-primary: #121212;
+    --bg-secondary: #1e1e1e;
+    --text-primary: #ffffff;
+    --text-secondary: #b3b3b3;
+    --accent: #f78b18;
+    --card-hover: #2d2d2d;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    padding-bottom: 4rem;
+}
+
+header {
+    background-color: var(--bg-secondary);
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--accent);
+}
+
+.nav-links a {
+    color: var(--text-primary);
+    text-decoration: none;
+    margin-left: 2rem;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--accent);
+}
+
+main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--text-primary);
+}
+
+/* ------------------------------------------------------------------------------------------ */
+/*                                               Main Page                                    */
+/* ------------------------------------------------------------------------------------------ */
+
+
+.places-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.place-card {
+    background-color: var(--bg-secondary);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    
+    position: relative;
+    width: 100%;
+}
+
+.place-card:hover {
+    transform: translateY(-5px);
+    background-color: var(--card-hover);
+}
+
+.place-image {
+    margin-top: 0.3rem;
+    width: 100%;
+    height: 20rem;
+    object-fit: contain;
+    position: relative;
+    z-index: 1;
+    padding: 0;
+}
+
+.place-bg-image {
+    width: 100%;
+    height: 20rem;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    filter: blur(5px);
+    z-index: 0;
+    transform: scale(1.25);
+}
+
+
+.place-info {
+    padding: 1.5rem;
+    background-color: var(--bg-secondary);
+    position: relative;
+    z-index: 2;
+}
+
+.place-info h2 {
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.place-info p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+
+/* ------------------------------------------------------------------------------------------ */
+/*                                               Footer Code                                  */
+/* ------------------------------------------------------------------------------------------ */
+
+
+footer {
+    background-color: var(--bg-secondary);
+    color: var(--text-secondary);
+    text-align: center;
+    padding: 1rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .nav-links {
+        margin-top: 1rem;
+    }
+
+    .nav-links a {
+        margin: 0 1rem;
+    }
+
+    main {
+        margin: 1rem auto;
+    }
+
+    .places-grid {
+        grid-template-columns: 1fr;
+    }
+}
