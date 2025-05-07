@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ place.name }} - Incredible India</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='detail_styles.css') }}">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">Incredible India</div>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="place-detail">
+        <div class="hero-section">
+            <img src="/get_img/{{ place.image }}" alt="{{ place.name }}" class="main-image">
+            <div class="place-header">
+                <h1>{{ place.name }}</h1>
+                <p class="location">{{ place.location }}</p>
+            </div>
+        </div>
+
+        <div class="content-container">
+            <div class="description-section">
+                <div class="intro">
+                    <h2>Overview</h2>
+                    <p>{{ place.description_intro }}</p>
+                </div>
+
+                <div class="image-gallery">
+                    <img src="/get_img/{{ place.image2 }}" alt="{{ place.name }}">
+                    <img src="/get_img/{{ place.image3 }}" alt="{{ place.name }}">
+                </div>
+
+                <div class="history">
+                    <h2>History & Heritage</h2>
+                    <p>{{ place.description_history }}</p>
+                </div>
+
+                <div class="highlights">
+                    <h2>Highlights</h2>
+                    <p>{{ place.description_highlights }}</p>
+                </div>
+
+                <div class="visitor-info">
+                    <h2>Visitor Information</h2>
+                    <p>{{ place.description_tips }}</p>
+                </div>
+
+                <!-- <div class="cover-place"></div> -->
+            </div>
+
+            <div class="map-section">
+                <div id="map">
+                    <!-- Map will be rendered here -->
+                    <!-- {{ place.map_iframe }} -->
+                    {{ place.map_iframe | safe }}
+                </div>
+
+                <div class="location-details">
+                    <p>Latitude: {{ place.latitude }}</p>
+                    <p>Longitude: {{ place.longitude }}</p>
+                    <p>Location: {{ place.location }}</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Incredible India. All rights reserved.</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='detail_script.js') }}"></script>
+</body>
+
+</html>
