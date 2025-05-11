@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ place.name }} - Incredible India</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='detail_styles.css') }}">
 </head>
 
@@ -76,10 +77,11 @@
     </main>
 
     <footer>
-        <p>&copy; 2024 Incredible India. All rights reserved.</p>
+        <p>&copy; 2025 Incredible India. All rights reserved.</p>
     </footer>
 
-    <script src="{{ url_for('static', filename='detail_script.js') }}"></script>
+    <!-- Script can be added like this, but it is un_used -->
+    <!-- <script src="{{ url_for('static', filename='detail_script.js') }}"></script> -->
 </body>
 
 </html>
