@@ -7,6 +7,7 @@ from sq_db import get_all_locations_data, get_place_details, get_location_data, 
 app = Flask(__name__)
 
 IMAGE_DIRECTORY = os.path.join(app.root_path, 'static/images')
+S3_BASE_URL = "Enter S3 bucket URL here: https://<bucket_name>.s3.<region>.amazonaws.com"
 
 
 @app.route('/test')
@@ -46,7 +47,13 @@ def place_detail(place_id):
     for key, value in place_map.items():
         final_data[key] = value
 
+    final_data["s3_base_url"] = S3_BASE_URL
     return render_template('place_detail.html', place=final_data), 200
+
+
+@app.route('/get_s3_base_url')
+def get_s3_base_url():
+    return jsonify(S3_BASE_URL), 200
 
 
 if __name__ == '__main__':
