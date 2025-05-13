@@ -23,7 +23,14 @@
 
     <main class="place-detail">
         <div class="hero-section">
+            <!-- From flask server
+            -->
             <img src="/get_img/{{ place.image }}" alt="{{ place.name }}" class="main-image">
+
+            <!-- From S3 bucket
+            <img src="{{ place.s3_base_url }}/{{ place.image }}" alt="{{ place.name }}" class="main-image">
+            -->
+
             <div class="place-header">
                 <h1>{{ place.name }}</h1>
                 <p class="location">{{ place.location }}</p>
@@ -38,8 +45,16 @@
                 </div>
 
                 <div class="image-gallery">
+                    <!-- Flask server
+                    -->
                     <img src="/get_img/{{ place.image2 }}" alt="{{ place.name }}">
                     <img src="/get_img/{{ place.image3 }}" alt="{{ place.name }}">
+
+                    <!-- S3 Bucket
+                    <img src="{{ place.s3_base_url }}/{{ place.image2 }}" alt="{{ place.name }}">
+                    <img src="{{ place.s3_base_url }}/{{ place.image3 }}" alt="{{ place.name }}">
+                    -->
+
                 </div>
 
                 <div class="history">
