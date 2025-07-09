@@ -38,7 +38,7 @@
 - Option to use either S3 or EBS for storing image assets.
 
 ## Architecture:
-![Architecture Diagram](https://cdn.jsdelivr.net/gh/Bbs1412/aws_beginner_project/Docs/architecture.png)
+<image src="https://cdn.jsdelivr.net/gh/Bbs1412/aws_beginner_project/Docs/architecture.png" alt="Project Architecture Diagram" width="550">
 
 ## Warning:
 - The project is not meant for real-world use or as an impactful solution. Its main purpose is to demonstrate how different AWS services can be used together in a beginner-friendly setup.
@@ -182,6 +182,30 @@ To run the project locally on your device first, follow these steps:
 - To update the locations, you can modify data in [`sq_db_entries.py`](sq_db_entries.py) file. This file is used to create the initial database entries and can be modified to add or update or remove locations.
 
 - Make sure that file names and corresponding data in the database are consistent, so that the images can be loaded correctly.
+
+
+# 🚀 Steps to deploy:
+
+> [!CAUTION]
+> Avoid doing anything un-necessary in the AWS console, unless you know what you are doing.  
+> It can lead to unexpected charges on your AWS account.  
+> Don't forget to stop or terminate the resources after you are done with the project.  
+> More details are here in [Important Instructions](#-important-instructions) section. 
+
+## Update the project files:
+1. Assuming that you have already created a fork of the repository and cloned it to your local machine.
+
+1. If you have made any changes to the code, make sure to commit and push those changes to GitHub (to your own version of the project):
+    ```bash
+    # make sure you are in the project directory `aws_beginner_project`
+    git add .
+    git commit -m "Update project files"
+    git push origin main
+    ```
+
+1. After you make any new changes, make sure to `add > commit > push` them to your GitHub repository.
+
+1. If you get any errors or issues, ChatGPT is always a good friend to help you out 😅.
 
 
 
