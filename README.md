@@ -9,7 +9,6 @@
 
 
 # Index:
-- [AWS Beginner Project](#aws-beginner-project)
 - [Project Details](#-project-details)
     - [Aim](#aim)
     - [Features](#features)
@@ -18,11 +17,12 @@
     - [Tech Stack](#-tech-stack)
     - [Another Version](#another-version)
 - [Steps to run](#-steps-to-run)
-- [To make changes](#-to-make-changes)
+- [To make changes](#%EF%B8%8F-to-make-changes)
 - [Steps to deploy](#-steps-to-deploy)
-- [Important Instructions](#-important-instructions)
+- [Important Instructions](#%EF%B8%8F-important-instructions)
+- [Cleanup](#-cleanup)
 - [Contributions](#-contributions)
-- [License](#-license)
+- [License](#%EF%B8%8F-license)
 - [Contact](#-contact)
 
 
@@ -38,7 +38,7 @@
 - Option to use either S3 or EBS for storing image assets.
 
 ## Architecture:
-<image src="https://cdn.jsdelivr.net/gh/Bbs1412/aws_beginner_project/Docs/architecture.png" alt="Project Architecture Diagram" width="550">
+<image src="https://cdn.jsdelivr.net/gh/Bbs1412/aws_beginner_project/Docs/architecture.png" alt="Project Architecture Diagram" style="width: 550px;">
 
 ## Warning:
 - The project is not meant for real-world use or as an impactful solution. Its main purpose is to demonstrate how different AWS services can be used together in a beginner-friendly setup.
@@ -126,7 +126,7 @@ https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-plain.svg
 - You can check that version of the project: [![AWS Advanced Project](https://img.shields.io/badge/Bbs1412/-AWS_Advanced_Project-ff8800.svg?logo=github)](https://github.com/Bbs1412/aws_advanced_project)
 
 
-# 🛠️ Steps to run:
+# 🚀 Steps to run:
 To run the project locally on your device first, follow these steps:
 
 1. Create fork of the repository:
@@ -184,7 +184,7 @@ To run the project locally on your device first, follow these steps:
 - Make sure that file names and corresponding data in the database are consistent, so that the images can be loaded correctly.
 
 
-# 🚀 Steps to deploy:
+# 🌐 Steps to deploy:
 
 > [!CAUTION]
 > Avoid doing anything un-necessary in the AWS console, unless you know what you are doing.  
@@ -206,6 +206,70 @@ To run the project locally on your device first, follow these steps:
 1. After you make any new changes, make sure to `add > commit > push` them to your GitHub repository.
 
 1. If you get any errors or issues, ChatGPT is always a good friend to help you out 😅.
+
+
+## Remember:
+- AWS resources can be used across various regions.
+- Make sure that you always select the same region for all the resources you create, to avoid any issues later. (Regions are visible in the top right corner of the AWS console.)
+- Default region is `us-east-1`, so you can use that for all the resources.
+
+## Set Up S3 Bucket (Optional):
+- In the project code files, static assets are served from the EC2 instance itself.
+- Optionally, you can use S3 to serve the static assets.
+- Make the below mentioned changes first:
+    - Uncomment the S3 bucket code in the [`static/script.js`](static/script.js#L39) and [`templates/place_detail.html`](templates/place_detail.html#L49).
+    - Fill in the S3 URL in the [`app.py`](app.py).
+    - Commit new changes to github.
+- Now, you can follow these steps to create S3 bucket and upload the static assets with public access:
+    1. Go to the [AWS Console](https://console.aws.amazon.com/) and log in to your AWS account.
+    1. Navigate to the S3 service. (You can search for "S3" in the search bar.)
+    1. Click on "Create bucket".
+    1. Name you bucket something like `travel-guide-project` (or any unique name) 
+    1. Keeping other settings to their defaults, scroll down to ***Block Public Access settings for this bucket*** section and uncheck the **Block all public access** option. Acknowledge the warning and click on **Create bucket** button.
+    1. If name is already taken, you can try with a different name.
+    
+- Add `Bucket Policy` to allow public access to the bucket:
+    1. Click on the bucket name you just created.
+    1. Go to the **Permissions** tab.
+    1. Scroll down to the **Bucket policy** section and click on **Edit**.
+    1. Add the following policy, replacing `travel-guide-project` with your actual bucket name:
+        ```json
+        {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Sid": "PublicReadGetObject",
+                    "Effect": "Allow",
+                    "Principal": "*",
+                    "Action": "s3:GetObject",
+                    "Resource": "arn:aws:s3:::travel-guide-project/*"
+                }
+            ]
+        }
+        ```
+    1. Click on **Save changes**.
+    
+- Test the bucket:
+    1. Go to the bucket you just created.
+    1. Click on the **Upload** button and upload some test image file to the bucket.
+    1. Once uploaded, click on the file name to view its details.
+    1. On the page, you will see the **Object URL**. This is the public URL of the file you just uploaded.
+    1. Try checking file url on another browser or in incognito mode. It should be accessible publicly.
+
+- Now, you can add all the assets from [static/images](static/images) directory to the S3 bucket.
+
+
+
+# 🧹 Cleanup:
+
+## S3 Bucket:
+- To delete the S3 bucket, go to the S3 service in the AWS console.
+- First you need to clear all the objects in the bucket before deleting it.
+- Click on the bucket name you created, then go to the **Objects** tab.
+- Select all the objects in the bucket and press **Delete** button.
+- Follow any extra steps on the screen to confirm deletion of objects.
+- Now go back to the **Buckets** tab, select the bucket you want to delete, and click on the **Delete** button.
+- Confirm the deletion by typing the bucket name when prompted.
 
 
 
