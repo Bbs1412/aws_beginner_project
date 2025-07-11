@@ -181,11 +181,8 @@ To run the project locally on your device first, follow these steps:
 
 # 🛠️ To make changes:
 - To make changes in UI, html files in ***templates/*** and, scripts and styles in ***static/*** directories can be modified. 
-
 - The script [`sq_db.py`](sq_db.py) is used to create the SQLite database file. It provides all the necessary functions to insert the new data into the database.
-
 - To update the locations, you can modify data in [`sq_db_entries.py`](sq_db_entries.py) file. This file is used to create the initial database entries and can be modified to add or update or remove locations.
-
 - Make sure that file names and corresponding data in the database are consistent, so that the images can be loaded correctly.
 
 
@@ -199,7 +196,6 @@ To run the project locally on your device first, follow these steps:
 
 ## Update the project files:
 1. Assuming that you have already created a fork of the repository and cloned it to your local machine.
-
 1. If you have made any changes to the code, make sure to commit and push those changes to GitHub (to your own version of the project):
     ```bash
     # make sure you are in the project directory `aws_beginner_project`
@@ -207,9 +203,7 @@ To run the project locally on your device first, follow these steps:
     git commit -m "Update project files"
     git push origin main
     ```
-
 1. After you make any new changes, make sure to `add > commit > push` them to your GitHub repository.
-
 1. If you get any errors or issues, ChatGPT is always a good friend to help you out 😅.
 
 > [!TIP]
@@ -232,7 +226,6 @@ To run the project locally on your device first, follow these steps:
     1. Name you bucket something like `travel-guide-project` (or any unique name) 
     1. Keeping other settings to their defaults, scroll down to ***Block Public Access settings for this bucket*** section and uncheck the **Block all public access** option. Acknowledge the warning and click on **Create bucket** button.
     1. If name is already taken, you can try with a different name.
-    
 - Add `Bucket Policy` to allow public access to the bucket:
     1. Click on the bucket name you just created.
     1. Go to the **Permissions** tab.
@@ -253,7 +246,6 @@ To run the project locally on your device first, follow these steps:
         }
         ```
     1. Click on **Save changes**.
-    
 - Test the bucket:
     1. Go to the bucket you just created.
     1. Click on the **Upload** button and upload some test image file to the bucket.
@@ -264,6 +256,28 @@ To run the project locally on your device first, follow these steps:
 - Now, you can add all the assets from [static/images](static/images) directory to the S3 bucket using same file upload method.
 
 
+## Security rules:
+- To serve our application, we need a compute instance that can run the Flask application.
+- But, before setting up the EC2 instance, we need to create a security group that allows incoming traffic on port 5000 (or any other port you want to use).
+- Follow these steps to create a security group:
+    1. Go to the [AWS Console](https://console.aws.amazon.com/) and log in to your AWS account.
+    1. Navigate to the EC2 service. (You can search for "EC2" in the search bar.)
+    1. In the left sidebar, click on **Security Groups** under **Network & Security**.
+    1. Click on the **Create security group** button.
+    1. Name your security group something like `travel-guide-sg`.
+    1. Add a description like `Security group for travel guide application`.
+    1. Under **Inbound rules**, click on **Add rule**.
+        - Type: Custom TCP Rule
+        - Protocol: TCP
+        - Port Range: 5000
+        - Source: Anywhere-IPv4
+    1. Click on **Create security group** button to create the security group.
+- Now, you have a security group that allows incoming traffic on port 5000 from anywhere (IPv4).
+- You can also add rules for IPv6 if you want to allow traffic from IPv6 addresses as well.
+- Also, you can add rules for SSH (port 22) if you want to access the instance via SSH later.
+
+
+---
 
 # 🧹 Cleanup:
 
@@ -275,6 +289,13 @@ To run the project locally on your device first, follow these steps:
 1. Follow any extra steps on the screen to confirm deletion of objects.
 1. Now go back to the **Buckets** tab, select the bucket you want to delete, and click on the **Delete** button.
 1. Confirm the deletion by typing the bucket name when prompted.
+
+## Security Group:
+1. To delete the security group, go to the EC2 service in the AWS console.
+1. In the left sidebar, click on **Security Groups** under **Network & Security**.
+1. Select the security group you created for the project.
+1. Click on the **Actions** button and select **Delete security group**.
+
 
 
 
