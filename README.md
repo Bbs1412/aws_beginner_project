@@ -61,34 +61,34 @@ https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-plain.svg
     </thead>
     <tbody>
         <tr>
-            <td><image src="https://cdn.jsdelivr.net/gh/Bbs1412/aws_beginner_project/Docs//html5-plain.svg" alt="HTML-icon" height=45></td>
+            <td><image src="https://cdn.jsdelivr.net/gh/Bbs1412/aws_beginner_project/Docs/html5-plain.svg" alt="HTML-icon" height=45></td>
             <td>HTML/CSS/JS</td>
             <td>Pretty obvious beginner-friendly web technologies for building the frontend.</td>
         </tr>
         <tr>
-            <td><image src="https://cdn.jsdelivr.net/gh/Bbs1412/aws_beginner_project/Docs//flask-original-wordmark.svg" alt="Flask-icon" height=50></td>
+            <td><image src="https://cdn.jsdelivr.net/gh/Bbs1412/aws_beginner_project/Docs/flask-original-wordmark.svg" alt="Flask-icon" height=50></td>
             <td>Flask</td>
             <td>A lightweight Python web framework to serve the web application.</td>
         </tr>
         <tr>
-            <td><image src="https://cdn.jsdelivr.net/gh/Bbs1412/aws_beginner_project/Docs//sqlite-original.svg" alt="SQLite-icon" height=45></td>
+            <td><image src="https://cdn.jsdelivr.net/gh/Bbs1412/aws_beginner_project/Docs/sqlite-original.svg" alt="SQLite-icon" height=45></td>
             <td>SQLite-3</td>
             <td>A simple file based database for storing travel destination data.</td>
         </tr>
         <tr>
             <th colspan="3">AWS Services</th>
         <tr>
-            <td><image src="https://cdn.jsdelivr.net/gh/Bbs1412/aws_beginner_project/Docs//EC2.svg" alt="AWS-icon" height=45></td>
+            <td><image src="https://cdn.jsdelivr.net/gh/Bbs1412/aws_beginner_project/Docs/EC2.svg" alt="AWS-icon" height=45></td>
             <td>AWS EC2</td>
             <td>For hosting the web application.</td>
         </tr>
         <tr>
-            <td><image src="https://cdn.jsdelivr.net/gh/Bbs1412/aws_beginner_project/Docs//Elastic Block Store.svg" alt="EBS-icon" height=45></td>
+            <td><image src="https://cdn.jsdelivr.net/gh/Bbs1412/aws_beginner_project/Docs/Elastic Block Store.svg" alt="EBS-icon" height=45></td>
             <td>AWS EBS</td>
             <td>For persistent instance storage.</td>
         </tr>
         <tr>
-            <td><image src="https://cdn.jsdelivr.net/gh/Bbs1412/aws_beginner_project/Docs//Simple Storage Service.svg" alt="S3-icon" height=45></td>
+            <td><image src="https://cdn.jsdelivr.net/gh/Bbs1412/aws_beginner_project/Docs/Simple Storage Service.svg" alt="S3-icon" height=45></td>
             <td>AWS S3</td>
             <td>For hosting the static website assets.</td>
         </tr>
@@ -96,19 +96,24 @@ https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-plain.svg
             <th colspan="3">(Optional) You can add these services easily</th>
         </tr>
         <tr>
-            <td><image src="https://cdn.jsdelivr.net/gh/Bbs1412/aws_beginner_project/Docs//RDS.svg" alt="RDS-icon" height=45></td>
+            <td><image src="https://cdn.jsdelivr.net/gh/Bbs1412/aws_beginner_project/Docs/RDS.svg" alt="RDS-icon" height=45></td>
             <td>AWS IAM</td>
             <td>For managing access to AWS services with roles and policies.</td>
         </tr>
         <tr>
-            <td><image src="https://cdn.jsdelivr.net/gh/Bbs1412/aws_beginner_project/Docs//CloudWatch.svg" alt="CloudWatch-icon" height=45></td>
+            <td><image src="https://cdn.jsdelivr.net/gh/Bbs1412/aws_beginner_project/Docs/CloudWatch.svg" alt="CloudWatch-icon" height=45></td>
             <td>AWS CloudWatch</td>
             <td>For monitoring instance performance and logs.</td>
         </tr>
         <tr>
-            <td><image src="https://cdn.jsdelivr.net/gh/Bbs1412/aws_beginner_project/Docs//CloudTrail.svg" alt="CloudTrail-icon" height=45></td>
+            <td><image src="https://cdn.jsdelivr.net/gh/Bbs1412/aws_beginner_project/Docs/CloudTrail.svg" alt="CloudTrail-icon" height=45></td>
             <td>AWS CloudTrail</td>
             <td>For tracking user activity and API usage.</td>
+        </tr>
+        <tr>
+            <td><image src="./Docs/Budgets.svg" alt="Budgets-icon" height=45></td>
+            <td>AWS Budgets</td>
+            <td>For setting up cost and usage budgets to avoid unexpected charges.</td>
         </tr>
 </table>
 
@@ -190,7 +195,7 @@ To run the project locally on your device first, follow these steps:
 > Avoid doing anything un-necessary in the AWS console, unless you know what you are doing.  
 > It can lead to unexpected charges on your AWS account.  
 > Don't forget to stop or terminate the resources after you are done with the project.  
-> More details are here in [Important Instructions](#-important-instructions) section. 
+> More details are here in [Important Instructions](#-important-instructions) and [Cleanup](#-cleanup) sections.
 
 ## Update the project files:
 1. Assuming that you have already created a fork of the repository and cloned it to your local machine.
@@ -207,11 +212,11 @@ To run the project locally on your device first, follow these steps:
 
 1. If you get any errors or issues, ChatGPT is always a good friend to help you out 😅.
 
+> [!TIP]
+> AWS resources can be used across various regions.
+> Make sure that you always select the same region for all the resources you create, to avoid any issues later. (Regions are visible in the top right corner of the AWS console.)
+> Default region is `us-east-1`, so you can use that for all the resources.
 
-## Remember:
-- AWS resources can be used across various regions.
-- Make sure that you always select the same region for all the resources you create, to avoid any issues later. (Regions are visible in the top right corner of the AWS console.)
-- Default region is `us-east-1`, so you can use that for all the resources.
 
 ## Set Up S3 Bucket (Optional):
 - In the project code files, static assets are served from the EC2 instance itself.
@@ -256,20 +261,20 @@ To run the project locally on your device first, follow these steps:
     1. On the page, you will see the **Object URL**. This is the public URL of the file you just uploaded.
     1. Try checking file url on another browser or in incognito mode. It should be accessible publicly.
 
-- Now, you can add all the assets from [static/images](static/images) directory to the S3 bucket.
+- Now, you can add all the assets from [static/images](static/images) directory to the S3 bucket using same file upload method.
 
 
 
 # 🧹 Cleanup:
 
 ## S3 Bucket:
-- To delete the S3 bucket, go to the S3 service in the AWS console.
-- First you need to clear all the objects in the bucket before deleting it.
-- Click on the bucket name you created, then go to the **Objects** tab.
-- Select all the objects in the bucket and press **Delete** button.
-- Follow any extra steps on the screen to confirm deletion of objects.
-- Now go back to the **Buckets** tab, select the bucket you want to delete, and click on the **Delete** button.
-- Confirm the deletion by typing the bucket name when prompted.
+1. To delete the S3 bucket, go to the S3 service in the AWS console.
+1. First you need to clear all the objects in the bucket before deleting it.
+1. Click on the bucket name you created, then go to the **Objects** tab.
+1. Select all the objects in the bucket and press **Delete** button.
+1. Follow any extra steps on the screen to confirm deletion of objects.
+1. Now go back to the **Buckets** tab, select the bucket you want to delete, and click on the **Delete** button.
+1. Confirm the deletion by typing the bucket name when prompted.
 
 
 
