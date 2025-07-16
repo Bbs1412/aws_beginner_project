@@ -277,6 +277,37 @@ To run the project locally on your device first, follow these steps:
 - Also, you can add rules for SSH (port 22) if you want to access the instance via SSH later.
 
 
+## Set Up EC2 Instance:
+- Now, we can set up an EC2 instance to run our Flask application.
+- Follow these steps to create an EC2 instance:
+    1. Go to the [AWS Console](https://console.aws.amazon.com/) and log in to your AWS account.
+    1. Navigate to the EC2 service. (You can search for "EC2" in the search bar.)
+    1. Click on the **Launch Instance** button.
+    1. Then, under various sections as shown below, configure the instance settings as per your requirements (else, default settings are fine for this project):
+    1. Names and tags:
+        - Enter some name for the instance, like `travel-guide-server`.
+    1. Application and OS Images (Amazon Machine Image):
+        - Select **Amazon Linux** image with aws logo.
+    1. Instance Type:
+        - Select **t2.micro** (this is free-tier eligible).
+        - Do not select any other instance type, as it may incur charges.
+    1. Key Pair (login):
+        - Create a new key pair, with default settings.
+        - Name it something like `travel-guide-key`.
+        - Once created, it will be automatically downloaded.
+        - In this version of the project, we will not use it, but keep it saved in order to access the instance later if needed via SSH.
+    1. Network Settings:
+        - Under firewall settings, you will see the security group section.
+        - Click on **Select an existing security group** and select the security group you created earlier (`travel-guide-sg`).
+        - Make sure to allow incoming traffic on port 5000.
+        - You can also add rules for SSH (port 22) if you want to access the instance via SSH later.
+    1. Configure Storage:
+        - You can leave the default settings as they are.
+    1. Click on **Launch Instances** button to launch the instance.
+- After the instance is launched, you can see the success message with the instance ID (i-xxxxxx).
+- Now the instance can be checked in the **Instances** section in the left sidebar of the EC2 service page.
+
+
 ---
 
 # 🧹 Cleanup:
@@ -296,7 +327,13 @@ To run the project locally on your device first, follow these steps:
 1. Select the security group you created for the project.
 1. Click on the **Actions** button and select **Delete security group**.
 
-
+## EC2 Instance:
+1. To delete the EC2 instance, go to the EC2 service in the AWS console.
+1. In the left sidebar, click on **Instances**.
+1. Select the instance you created for the project.
+1. Click on the **Actions** button, then select **Instance State** > **Terminate instance**.
+1. Confirm the termination by clicking on the **Terminate** button in the dialog box.
+1. This will properly stop and delete the instance.
 
 
 # 🤝 Contributions:
