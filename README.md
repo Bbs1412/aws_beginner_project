@@ -83,12 +83,12 @@ https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-plain.svg
             <td>For hosting the web application.</td>
         </tr>
         <tr>
-            <td><image src="https://cdn.jsdelivr.net/gh/Bbs1412/aws_beginner_project/Docs/Elastic Block Store.svg" alt="EBS-icon" height=45></td>
+            <td><image src="https://cdn.jsdelivr.net/gh/Bbs1412/aws_beginner_project/Docs/Elastic%20Block%20Store.svg" alt="EBS-icon" height=45></td>
             <td>AWS EBS</td>
             <td>For persistent instance storage.</td>
         </tr>
         <tr>
-            <td><image src="https://cdn.jsdelivr.net/gh/Bbs1412/aws_beginner_project/Docs/Simple Storage Service.svg" alt="S3-icon" height=45></td>
+            <td><image src="https://cdn.jsdelivr.net/gh/Bbs1412/aws_beginner_project/Docs/Simple%20Storage%20Service.svg" alt="S3-icon" height=45></td>
             <td>AWS S3</td>
             <td>For hosting the static website assets.</td>
         </tr>
@@ -96,7 +96,7 @@ https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-plain.svg
             <th colspan="3">(Optional) You can add these services easily</th>
         </tr>
         <tr>
-            <td><image src="https://cdn.jsdelivr.net/gh/Bbs1412/aws_beginner_project/Docs/RDS.svg" alt="RDS-icon" height=45></td>
+            <td><image src="https://cdn.jsdelivr.net/gh/Bbs1412/aws_beginner_project/Docs/IAM%20Identity%20Center.svg" alt="IAM-icon" height=45></td>
             <td>AWS IAM</td>
             <td>For managing access to AWS services with roles and policies.</td>
         </tr>
@@ -106,14 +106,14 @@ https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-plain.svg
             <td>For monitoring instance performance and logs.</td>
         </tr>
         <tr>
+            <td><image src="https://cdn.jsdelivr.net/gh/Bbs1412/aws_beginner_project/Docs/Budgets.svg" alt="Budgets-icon" height=45></td>
+            <td>AWS Budgets</td>
+            <td>For setting up cost and usage budgets to avoid unexpected charges.</td>
+        </tr>
+        <tr>
             <td><image src="https://cdn.jsdelivr.net/gh/Bbs1412/aws_beginner_project/Docs/CloudTrail.svg" alt="CloudTrail-icon" height=45></td>
             <td>AWS CloudTrail</td>
             <td>For tracking user activity and API usage.</td>
-        </tr>
-        <tr>
-            <td><image src="./Docs/Budgets.svg" alt="Budgets-icon" height=45></td>
-            <td>AWS Budgets</td>
-            <td>For setting up cost and usage budgets to avoid unexpected charges.</td>
         </tr>
 </table>
 
@@ -308,6 +308,54 @@ To run the project locally on your device first, follow these steps:
 - Now the instance can be checked in the **Instances** section in the left sidebar of the EC2 service page.
 
 
+## Deploy the Application:
+Finally, we can deploy the Flask application on the EC2 instance.
+
+1. Connect to the EC2 instance:
+    - In the **Instances** section, select the instance you just created.
+    - Click on the **Connect** button at the top right corner and click Connect once again.
+    - If you see a ASCII bird art, it means you are connected to the instance.
+    - Run the following commands:
+        ```bash
+        # Update the package manager
+        sudo yum update -y
+        # Install Python 3 and git
+        sudo yum install python3 git -y
+        ```
+
+1. Clone the project repository:
+    - Run the following command to clone the project repository:
+        ```bash
+        git clone https://github.com/<your-username>/aws_beginner_project.git
+        cd aws_beginner_project
+        ```
+    - If you want to use S3, make sure that updated code files are already pushed to your GitHub repository.
+    
+1. Install the required packages in virtual environment:
+    ```bash
+    python3 -m venv venv
+    source venv/bin/activate
+    pip install -r requirements.txt
+    ```
+
+1. Create the SQLite database:
+    ```bash
+    python sq_db_entries.py
+    ```
+
+1. Run the Flask application:
+    ```bash
+    python app.py &
+    ```
+
+
+## Access the Application:
+- Check `http://<your-ec2-public-ip>:5000` in your browser to see the deployed application.
+- IP can be found in the **Instances** section of the EC2 service page.
+- Don't worry if you get security warning, its only because we are using http instead of https.
+- You can create self-signed certificate to use https, but its not necessary for this project.
+- Keep instance running as long as you want to access the application.
+
 ---
 
 # 🧹 Cleanup:
@@ -335,6 +383,34 @@ To run the project locally on your device first, follow these steps:
 1. Confirm the termination by clicking on the **Terminate** button in the dialog box.
 1. This will properly stop and delete the instance.
 
+## EBS Volume:
+1. EBS volumes are assigned to the EC2 instance when you created it.
+1. To delete the EBS volume, go to the EC2 service in the AWS console.
+1. In the left sidebar, click on **Volumes** under **Elastic Block Store**.
+1. Select the volume that was created for the instance.
+1. Click on the **Actions** button and select **Delete volume**.
+
+---
+
+# ⚠️ Important Instructions:
+- **Free-tier limits:** Make sure to stay within the free-tier limits of AWS services to avoid unexpected charges.
+
+- **Instance type:** Use only `free-tier eligible` instance types like `t2.micro` to avoid charges.
+
+- **Stop vs Terminate EC2:** 
+    - **Stop:** Stopping the instance will not delete it, and you will still be charged for the EBS volume attached to it.
+    - **Terminate:** Terminating the instance will delete it and you will not be charged for the instance or the EBS volume.
+
+- **Region:** 
+    - Make sure to select the same region for all AWS services to avoid any billing surprises.
+    - It is visible in the top right corner of the AWS console.
+
+- **Billing alerts:** 
+    - Set up billing alerts in the AWS console to get notified if your usage exceeds the free-tier limits.
+    - You can do this by going to the **Billing and Cost Management** section in the AWS console and setting up a budget.
+
+
+---
 
 # 🤝 Contributions:
 
