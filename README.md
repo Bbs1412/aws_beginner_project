@@ -12,6 +12,7 @@
 - [Project Details](#-project-details)
     - [Aim](#aim)
     - [Features](#features)
+    - [Screenshots](#screenshots)
     - [Architecture](#architecture)
     - [Warning](#warning)
     - [Tech Stack](#-tech-stack)
@@ -36,6 +37,13 @@
 - Dynamic page rendering with data pulled from a database.
 - Clean, user-friendly interface using just HTML, CSS, and JavaScript.
 - Option to use either S3 or EBS for storing image assets.
+
+## Screenshots:
+<image src="https://cdn.jsdelivr.net/gh/Bbs1412/aws_beginner_project/Docs/ss_1.png" alt="Screen Shot 1" style="width: 550px;">
+
+<image src="https://cdn.jsdelivr.net/gh/Bbs1412/aws_beginner_project/Docs/ss_2.png" alt="Screen Shot 2" style="width: 550px;">
+
+<image src="https://cdn.jsdelivr.net/gh/Bbs1412/aws_beginner_project/Docs/ss_3.png" alt="Screen Shot 3" style="width: 550px;">
 
 ## Architecture:
 <image src="https://cdn.jsdelivr.net/gh/Bbs1412/aws_beginner_project/Docs/architecture.png" alt="Project Architecture Diagram" style="width: 550px;">
